@@ -1,0 +1,38 @@
+version: '3.4'
+services:
+  node:
+    restart: always
+    build:
+      context: ./docker/node
+      target: app
+    volumes:
+      - .:/usr/share/app
+    depends_on:
+     - mysql
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      target: server
+    ports: 
+      - 80:80
+    
+    depends_on:
+     - node
+
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+    ports:
+      - '3306'
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./docker/mysql/app.sql:/docker-entrypoint-initdb.d/app.sql
+
+volumes:
+  mysql:

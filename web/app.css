@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table, table td, table th {
+  padding: 5px;
+  border: 1px solid #444;
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+}
+
+h1, h2 {
+  text-transform: uppercase;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.2rem;
+} 
+h2 {
+  font-size: .9rem;
+}
+.content {
+  padding: 20px;
+}
+
+.content.main {
+  margin: 10px auto;
+  max-width: 480px;
+  background-color: #f4f4f4;
+}
