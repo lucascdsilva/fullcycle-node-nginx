@@ -3,7 +3,8 @@ services:
   node:
     restart: always
     build:
-      context: ./docker/node
+      context: .
+      dockerfile: ./docker/node/Dockerfile
       target: app
     volumes:
       - .:/usr/share/app
@@ -29,7 +30,7 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_ALLOW_EMPTY_PASSWORD: true
     ports:
-      - '3306'
+      - ':3306'
     volumes:
       - mysql:/var/lib/mysql
       - ./docker/mysql/app.sql:/docker-entrypoint-initdb.d/app.sql
