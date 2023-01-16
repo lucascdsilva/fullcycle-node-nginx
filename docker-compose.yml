@@ -8,6 +8,7 @@ services:
       target: app
     volumes:
       - .:/usr/share/app
+      - node_modules:/usr/share/app/node_modules
     depends_on:
      - mysql
 
@@ -37,3 +38,4 @@ services:
 
 volumes:
   mysql:
+  node_modules:
